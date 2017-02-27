@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index4</title>
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <div> 
+        <h2> Index4 sayfasi</h2>
+        <input type="button" id="btnJsonResult" value="Veri Getir" />
+        
+    </div>
+
+    <script>
+        $(function () {
+            $("#btnJsonResult").click(function () {
+
+                $.ajax({
+
+                    type: "GET",
+                    url: "/Home/Index5",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {   //veriler basarili sekilde cekilirse calisacak fonksiyon
+                        alert(data.ID)
+                        alert(data.Adi)
+                        alert(data.Fiyat)
+                        alert(data.Aciklama)
+                    }
+                    
+                })
+            })
+        
+        })
+    </script>
+    
+</body>
+</html>
