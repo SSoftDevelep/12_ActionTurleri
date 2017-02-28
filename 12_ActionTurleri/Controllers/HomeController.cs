@@ -62,7 +62,7 @@ namespace _12_ActionTurleri.Controllers
              
              */
 
-            return Json(urn,JsonRequestBehavior.AllowGet); // Json > verdigimiz urn nesnesini Json turune donusturur.
+            return Json(urn, JsonRequestBehavior.AllowGet); // Json > verdigimiz urn nesnesini Json turune donusturur.
         }
         [HttpPost]   //Bu post metodunu ajax kisminda  type: "POST", post ile veri cekmek isteyeni engellemek icin yazdik.
         public JsonResult Index5(int? deger)
@@ -70,8 +70,7 @@ namespace _12_ActionTurleri.Controllers
             return Json(null);
         }
 
-
-        //RedirectToRouteResult
+        #region RedirectToRouteResult
         static List<string> Veriler = new List<string>();
         public ActionResult Sayfamiz()
         {
@@ -79,9 +78,9 @@ namespace _12_ActionTurleri.Controllers
 
             return View();
         }
-   
+
         [HttpPost]
-        public ActionResult Sayfamiz(string ad,string soyad)
+        public ActionResult Sayfamiz(string ad, string soyad)
         {
             Veriler.Add(ad + " " + soyad);
             return new RedirectToRouteResult(
@@ -94,6 +93,22 @@ namespace _12_ActionTurleri.Controllers
                         controller = "Home",
                         kod = Guid.NewGuid().ToString()
                     }));
+        }
+
+        #endregion
+
+
+        //FileResult- FileStreamResult
+        public ActionResult Dosyalar()
+        {
+            return View();
+        }
+
+        public FileResult PDFDosyaIndir()
+        {
+            string DosyaYolu = Server.MapPath("~/Files/git101.pdf");  //dosyanin tam fiziksel adresini verir.
+
+            return new FilePathResult(DosyaYolu,"application/pdf");
         }
     }
 }
