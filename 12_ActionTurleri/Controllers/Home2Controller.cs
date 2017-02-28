@@ -36,8 +36,10 @@ namespace _12_ActionTurleri.Controllers
                 };
 
 
-        
-            return PartialView("_KategorilerPartial2",kategoriler);
+
+            return PartialView("_KategorilerPartial2", kategoriler);
     }
+
+
 }
 }
