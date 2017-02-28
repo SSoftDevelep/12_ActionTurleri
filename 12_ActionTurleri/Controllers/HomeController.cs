@@ -1,7 +1,9 @@
 ﻿using _12_ActionTurleri.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -109,6 +111,24 @@ namespace _12_ActionTurleri.Controllers
             string DosyaYolu = Server.MapPath("~/Files/git101.pdf");  //dosyanin tam fiziksel adresini verir.
 
             return new FilePathResult(DosyaYolu,"application/pdf");
+        }
+
+        public FileStreamResult MetinDosyasiIndir()  //kullanici o an islem yapiyorsa ve birseyler uretilmek isteniyorsa. Ornegin excel ciktisi.
+        {
+            string metin = "Bu bir deneme mesajidir";
+            MemoryStream memo = new MemoryStream(); //hafizada tutulan akim.
+
+            byte[] bytes =Encoding.UTF8.GetBytes(metin);
+
+            memo.Write(bytes, 0, bytes.Length);
+            memo.Position = 0; // burasi cok onemli yoksa bos gorunur.
+
+            FileStreamResult resultStream = new FileStreamResult(memo, "text/plain");
+            resultStream.FileDownloadName = "deneme.txt";
+
+            return resultStream;
+
+
         }
     }
 }
