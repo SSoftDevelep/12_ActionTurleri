@@ -69,5 +69,31 @@ namespace _12_ActionTurleri.Controllers
         {
             return Json(null);
         }
+
+
+        //RedirectToRouteResult
+        static List<string> Veriler = new List<string>();
+        public ActionResult Sayfamiz()
+        {
+            ViewBag.Liste = Veriler;
+
+            return View();
+        }
+   
+        [HttpPost]
+        public ActionResult Sayfamiz(string ad,string soyad)
+        {
+            Veriler.Add(ad + " " + soyad);
+            return new RedirectToRouteResult(
+
+                //Home/Sayfamiz?kod=7D84DBF3-094B-4951-8D60-8CEF3FADD0AF
+                new System.Web.Routing.RouteValueDictionary(
+                    new
+                    {
+                        action = "Sayfamiz",
+                        controller = "Home",
+                        kod = Guid.NewGuid().ToString()
+                    }));
+        }
     }
 }
