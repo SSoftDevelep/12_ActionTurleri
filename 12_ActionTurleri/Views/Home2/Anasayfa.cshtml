@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Anasayfa</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <h2> Anasayfa</h2>
+    </div>
+
+
+    <div>
+        @*@Html.Partial("_KategorilerPartial")*@
+        @Html.Action("GetirKategoriPartial")
+        @Html.Action("GetirKategoriPartial2")
+    </div>
+
+</body>
+</html>

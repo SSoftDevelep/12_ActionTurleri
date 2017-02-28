@@ -113,7 +113,7 @@ namespace _12_ActionTurleri.Controllers
             return new FilePathResult(DosyaYolu,"application/pdf");
         }
 
-        public FileStreamResult MetinDosyasiIndir()  //kullanici o an islem yapiyorsa ve birseyler uretilmek isteniyorsa. Ornegin excel ciktisi.
+        public FileStreamResult MetinDosyasiIndir()  //kullanici o an islem yapiyorsa ve birseyler uretilmek isteniyorsa. Ornegin excel ciktisi gibi.
         {
             string metin = "Bu bir deneme mesajidir";
             MemoryStream memo = new MemoryStream(); //hafizada tutulan akim.
